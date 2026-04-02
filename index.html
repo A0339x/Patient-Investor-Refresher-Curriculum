@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LP Refresher Course Library | The Patient Investor Mastermind</title>
+
+  <!-- Google Fonts: Brand typography matching onboarding site -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════
+       HERO
+  ═══════════════════════════════════════ -->
+  <header id="hero">
+    <div class="hero-inner">
+      <div class="brand-eyebrow">The Patient Investor Mastermind</div>
+      <h1 class="hero-title">Liquidity Providing<br>Refresher Course Library</h1>
+      <p class="hero-subtitle">
+        Choose the lesson you want, then watch either Greg's or Shane's version.
+        Follow the Start Here path if you want the recommended order.
+      </p>
+
+      <!-- Progress -->
+      <div class="hero-progress" aria-live="polite">
+        <span id="progress-text" class="progress-text">0 of 10 completed</span>
+        <div class="progress-bar-wrap" role="progressbar" aria-valuemin="0" aria-valuemax="10" aria-valuenow="0">
+          <div id="progress-bar-fill" class="progress-bar-fill"></div>
+        </div>
+      </div>
+
+      <!-- CTAs -->
+      <div class="hero-ctas">
+        <button id="btn-start-here" class="cta-primary" aria-label="Start with Lesson 1">
+          Start Here
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </button>
+        <button id="btn-continue" class="cta-secondary" aria-label="Jump to your next incomplete lesson">
+          Continue Next Lesson
+        </button>
+      </div>
+    </div>
+
+    <!-- Decorative gold line -->
+    <div class="hero-divider" aria-hidden="true"></div>
+  </header>
+
+  <!-- ═══════════════════════════════════════
+       ALL COMPLETE BANNER (shown when done)
+  ═══════════════════════════════════════ -->
+  <div id="all-complete-banner" class="all-complete-banner" hidden aria-live="polite">
+    <div class="all-complete-inner">
+      <div class="all-complete-icon" aria-hidden="true">✦</div>
+      <h2 class="all-complete-title">All Lessons Completed</h2>
+      <p class="all-complete-sub">You've completed the full Liquidity Providing Refresher Course. Outstanding work.</p>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════
+       GUIDED PATH
+  ═══════════════════════════════════════ -->
+  <section id="path" aria-labelledby="path-heading">
+    <div class="section-inner">
+      <h2 id="path-heading" class="section-title">Your Learning Path</h2>
+      <p class="section-sub">New members: follow lessons in order for the best experience.</p>
+      <div id="path-steps" class="path-steps" role="list"></div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       LESSONS GRID
+  ═══════════════════════════════════════ -->
+  <main id="lessons-section" aria-labelledby="lessons-heading">
+    <div class="section-inner">
+      <h2 id="lessons-heading" class="section-title">Course Lessons</h2>
+      <div id="lessons-grid" class="lessons-grid" role="list"></div>
+    </div>
+  </main>
+
+  <!-- ═══════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════ -->
+  <footer id="footer">
+    <div class="footer-inner">
+      <span class="footer-brand">The Patient Investor Mastermind</span>
+      <span class="footer-sep" aria-hidden="true">·</span>
+      <span class="footer-copy">Built for guided learning and quick access.</span>
+    </div>
+  </footer>
+
+  <!-- ═══════════════════════════════════════
+       ONBOARDING MODAL
+  ═══════════════════════════════════════ -->
+  <div id="onboarding-backdrop" class="onboarding-backdrop" role="dialog" aria-modal="true" aria-labelledby="onboarding-title" hidden>
+    <div class="onboarding-modal">
+
+      <!-- Steps -->
+      <div class="onboarding-steps">
+
+        <!-- Step 1 -->
+        <div class="onboarding-step active" data-step="1">
+          <div class="onboarding-icon" aria-hidden="true">✦</div>
+          <h2 id="onboarding-title" class="onboarding-title">Welcome to the LP Refresher Course</h2>
+          <p class="onboarding-body">
+            This is your personal learning dashboard for the Liquidity Providing Refresher Course — built exclusively for members of <strong>The Patient Investor Mastermind</strong>.
+          </p>
+          <p class="onboarding-body">
+            Here's a quick walkthrough so you know exactly how to use it.
+          </p>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="onboarding-step" data-step="2">
+          <div class="onboarding-icon" aria-hidden="true">▶</div>
+          <h2 class="onboarding-title">Two Instructors, One Curriculum</h2>
+          <p class="onboarding-body">
+            Every lesson has <strong>two versions</strong> — one taught by Greg and one by Shane. Same material, different teaching style.
+          </p>
+          <p class="onboarding-body">
+            Pick whichever instructor resonates with you. You can watch both if you want a deeper understanding.
+          </p>
+          <div class="onboarding-example">
+            <span class="ex-btn ex-greg">▶ Watch Greg</span>
+            <span class="ex-btn ex-shane">▶ Watch Shane</span>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="onboarding-step" data-step="3">
+          <div class="onboarding-icon" aria-hidden="true">☑</div>
+          <h2 class="onboarding-title">Track Your Progress</h2>
+          <p class="onboarding-body">
+            Each lesson card has a <strong>Mark complete</strong> checkbox. Check it off after you finish — your progress saves automatically and persists across visits.
+          </p>
+          <p class="onboarding-body">
+            The progress bar at the top updates live, and the next lesson to tackle is always highlighted for you.
+          </p>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="onboarding-step" data-step="4">
+          <div class="onboarding-icon" aria-hidden="true">→</div>
+          <h2 class="onboarding-title">Follow the Recommended Order</h2>
+          <p class="onboarding-body">
+            If you're new, use the <strong>Start Here</strong> button and work through lessons 1 to 10 in sequence. Each lesson builds on the last.
+          </p>
+          <p class="onboarding-body">
+            Returning? Hit <strong>Continue Next Lesson</strong> to jump straight back to where you left off.
+          </p>
+          <p class="onboarding-body" style="color: var(--text-muted); font-size: 0.8rem;">
+            You can also jump to any lesson directly — the dashboard is yours to use however works best for you.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Footer: dots + buttons -->
+      <div class="onboarding-footer">
+        <div class="onboarding-dots" aria-label="Step indicator">
+          <button class="dot active" data-goto="1" aria-label="Step 1"></button>
+          <button class="dot" data-goto="2" aria-label="Step 2"></button>
+          <button class="dot" data-goto="3" aria-label="Step 3"></button>
+          <button class="dot" data-goto="4" aria-label="Step 4"></button>
+        </div>
+        <div class="onboarding-nav">
+          <button id="ob-back" class="ob-btn-back" hidden>Back</button>
+          <button id="ob-next" class="ob-btn-next">Next</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
