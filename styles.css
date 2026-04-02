@@ -786,6 +786,125 @@ body {
   }
 }
 
+/* ─── PASSWORD GATE ──────────────────────────────────────── */
+.password-gate {
+  position: fixed;
+  inset: 0;
+  background: var(--bg-deepest);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-xl);
+}
+
+.password-gate.hidden {
+  display: none;
+}
+
+.gate-inner {
+  width: 100%;
+  max-width: 420px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.gate-eyebrow {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold-base);
+  padding: 0.28rem 0.9rem;
+  border: 1px solid rgba(207,180,40,0.3);
+  border-radius: 100px;
+  background: rgba(207,180,40,0.06);
+  margin-bottom: var(--space-xs);
+}
+
+.gate-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  font-weight: 700;
+  background: var(--gold-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1.2;
+}
+
+.gate-sub {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: var(--space-sm);
+}
+
+.gate-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.gate-input-wrap {
+  width: 100%;
+}
+
+.gate-input {
+  width: 100%;
+  background: var(--bg-card);
+  border: 1px solid rgba(207,180,40,0.2);
+  border-radius: var(--radius-md);
+  padding: 0.85rem 1.1rem;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  text-align: center;
+  letter-spacing: 0.05em;
+  outline: none;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.gate-input::placeholder {
+  color: var(--text-muted);
+  letter-spacing: 0.02em;
+}
+
+.gate-input:focus {
+  border-color: rgba(207,180,40,0.5);
+  box-shadow: 0 0 0 3px rgba(207,180,40,0.08);
+}
+
+.gate-error {
+  font-size: 0.78rem;
+  color: #e57373;
+  font-weight: 500;
+}
+
+.gate-submit {
+  width: 100%;
+  padding: 0.85rem;
+  background: var(--gold-gradient);
+  color: #0a0800;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: opacity var(--transition), transform var(--transition);
+}
+
+.gate-submit:hover {
+  opacity: 0.88;
+  transform: translateY(-1px);
+}
+
 /* ─── ONBOARDING MODAL ───────────────────────────────────── */
 .onboarding-backdrop {
   position: fixed;
