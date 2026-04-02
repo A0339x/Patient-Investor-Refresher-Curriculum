@@ -94,6 +94,32 @@
   </footer>
 
   <!-- ═══════════════════════════════════════
+       PASSWORD GATE
+  ═══════════════════════════════════════ -->
+  <div id="password-gate" class="password-gate" role="dialog" aria-modal="true" aria-labelledby="gate-title">
+    <div class="gate-inner">
+      <div class="gate-eyebrow">The Patient Investor Mastermind</div>
+      <h1 id="gate-title" class="gate-title">Members Only</h1>
+      <p class="gate-sub">Enter your access password to continue.</p>
+      <form id="gate-form" class="gate-form" autocomplete="off">
+        <div class="gate-input-wrap">
+          <input
+            id="gate-input"
+            type="password"
+            class="gate-input"
+            placeholder="Enter password"
+            aria-label="Access password"
+            autocomplete="current-password"
+            required
+          />
+        </div>
+        <div id="gate-error" class="gate-error" hidden aria-live="polite">Incorrect password. Please try again.</div>
+        <button type="submit" class="gate-submit">Enter</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════
        ONBOARDING MODAL
   ═══════════════════════════════════════ -->
   <div id="onboarding-backdrop" class="onboarding-backdrop" role="dialog" aria-modal="true" aria-labelledby="onboarding-title" hidden>

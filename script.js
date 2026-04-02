@@ -326,6 +326,37 @@ function escapeHtml(str) {
     .replace(/'/g, '&#39;');
 }
 
+// ─── PASSWORD GATE ────────────────────────────────────────
+const AUTH_KEY = 'lp-refresher-auth';
+const CORRECT_PASSWORD = 'Inner Circle';
+
+function initPasswordGate() {
+  const gate = document.getElementById('password-gate');
+  if (localStorage.getItem(AUTH_KEY) === '1') {
+    gate.classList.add('hidden');
+    return;
+  }
+
+  // Focus input on load
+  document.getElementById('gate-input').focus();
+
+  document.getElementById('gate-form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const val = document.getElementById('gate-input').value;
+    const errorEl = document.getElementById('gate-error');
+
+    if (val === CORRECT_PASSWORD) {
+      localStorage.setItem(AUTH_KEY, '1');
+      gate.classList.add('hidden');
+      initOnboarding();
+    } else {
+      errorEl.hidden = false;
+      document.getElementById('gate-input').value = '';
+      document.getElementById('gate-input').focus();
+    }
+  });
+}
+
 // ─── ONBOARDING ───────────────────────────────────────────
 const ONBOARDING_KEY = 'lp-refresher-onboarding-seen';
 const TOTAL_STEPS = 4;
@@ -396,4 +427,9 @@ document.addEventListener('keydown', (e) => {
 
 // ─── INIT ─────────────────────────────────────────────────
 renderAll();
-initOnboarding();
+initPasswordGate();
+// initOnboarding() is called inside initPasswordGate() after successful auth
+// (or immediately if already authenticated)
+if (localStorage.getItem(AUTH_KEY) === '1') {
+  initOnboarding();
+}
