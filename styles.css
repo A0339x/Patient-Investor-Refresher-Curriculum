@@ -346,10 +346,19 @@ body {
   border-radius: 100px;
 }
 
-.promise-divider {
-  margin-top: var(--space-2xl);
-  height: 1px;
-  background: linear-gradient(to right, transparent, rgba(207,180,40,0.25), transparent);
+/* ─── HERO ACTIONS (progress + CTAs moved below promise) ── */
+#hero-actions {
+  padding: var(--space-2xl) var(--space-xl) 0;
+  text-align: center;
+}
+
+.hero-actions-inner {
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+#hero-actions .hero-divider {
+  margin-top: var(--space-3xl);
 }
 
 /* ─── SHARED SECTION STYLES ──────────────────────────────── */
