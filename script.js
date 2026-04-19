@@ -86,6 +86,22 @@ const LESSONS = [
     shane: 'https://youtu.be/sr7_E5XqQfI',
     homework: 'https://drive.google.com/file/d/19qtBX5PA2xu_d1TRLpcjTD0A_IsbjtMt/view',
   },
+  {
+    id: 11,
+    title: 'What to Do With Your Fees — Bull Market Portfolio Setup',
+    description: 'Reinvest earned fees into high-conviction coins to build zero-cost-basis bull market positions.',
+    greg: 'https://youtu.be/DsVhtCI7iLs',
+    shane: null,
+    homework: null,
+  },
+  {
+    id: 12,
+    title: 'What to Do With Your Fees — Moving From Arbitrum Into Other Networks',
+    description: 'Use Rubik to bridge and swap across networks, landing with the right gas tokens to deploy capital.',
+    greg: 'https://youtu.be/21WoN7LOiEk',
+    shane: null,
+    homework: null,
+  },
 ];
 
 // ─── PERSISTENCE ─────────────────────────────────────────
@@ -221,13 +237,21 @@ function buildCard(lesson, status) {
         <a href="${lesson.greg}" target="_blank" rel="noopener noreferrer" class="btn-greg" aria-label="Watch Greg's version of Lesson ${lesson.id}: ${lesson.title}">
           ${ICON_PLAY} Watch Greg
         </a>
-        <a href="${lesson.shane}" target="_blank" rel="noopener noreferrer" class="btn-shane" aria-label="Watch Shane's version of Lesson ${lesson.id}: ${lesson.title}">
-          ${ICON_PLAY} Watch Shane
-        </a>
+        ${lesson.shane
+          ? `<a href="${lesson.shane}" target="_blank" rel="noopener noreferrer" class="btn-shane" aria-label="Watch Shane's version of Lesson ${lesson.id}: ${lesson.title}">
+              ${ICON_PLAY} Watch Shane
+            </a>`
+          : `<span class="btn-shane is-disabled" aria-disabled="true" title="Shane's version coming soon">
+              ${ICON_PLAY} Shane — Coming Soon
+            </span>`}
       </div>
-      <a href="${lesson.homework}" target="_blank" rel="noopener noreferrer" class="btn-homework" aria-label="Open homework for Lesson ${lesson.id}: ${lesson.title}">
-        ${ICON_DOC} Homework
-      </a>
+      ${lesson.homework
+        ? `<a href="${lesson.homework}" target="_blank" rel="noopener noreferrer" class="btn-homework" aria-label="Open homework for Lesson ${lesson.id}: ${lesson.title}">
+            ${ICON_DOC} Homework
+          </a>`
+        : `<span class="btn-homework is-disabled" aria-disabled="true" title="Homework coming soon">
+            ${ICON_DOC} Homework — Coming Soon
+          </span>`}
     </div>
 
     <div class="card-footer">

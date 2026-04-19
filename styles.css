@@ -634,6 +634,14 @@ body {
   transform: translateY(-1px);
 }
 
+.btn-shane.is-disabled,
+.btn-homework.is-disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  pointer-events: none;
+  font-style: italic;
+}
+
 /* ─── Completion Toggle ── */
 .card-footer {
   display: flex;
