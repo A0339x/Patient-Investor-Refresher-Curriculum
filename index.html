@@ -25,29 +25,7 @@
         Choose the lesson you want, then watch either Greg's or Shane's version.
         Follow the Start Here path if you want the recommended order.
       </p>
-
-      <!-- Progress -->
-      <div class="hero-progress" aria-live="polite">
-        <span id="progress-text" class="progress-text">0 of 12 completed</span>
-        <div class="progress-bar-wrap" role="progressbar" aria-valuemin="0" aria-valuemax="12" aria-valuenow="0">
-          <div id="progress-bar-fill" class="progress-bar-fill"></div>
-        </div>
-      </div>
-
-      <!-- CTAs -->
-      <div class="hero-ctas">
-        <button id="btn-start-here" class="cta-primary" aria-label="Start with Lesson 1">
-          Start Here
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-        </button>
-        <button id="btn-continue" class="cta-secondary" aria-label="Jump to your next incomplete lesson">
-          Continue Next Lesson
-        </button>
-      </div>
     </div>
-
-    <!-- Decorative gold line -->
-    <div class="hero-divider" aria-hidden="true"></div>
   </header>
 
   <!-- ═══════════════════════════════════════
@@ -79,8 +57,32 @@
       <p class="promise-body promise-body-sub">
         This is the <strong>simplest</strong> version of our curriculum — and that's exactly where its power comes from. Fewer decisions. Less babysitting. A clean, focused approach that still produces returns far beyond anything traditional finance can offer. Master this, and you'll have a real engine working for you.
       </p>
-      <div class="promise-divider" aria-hidden="true"></div>
     </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       HERO ACTIONS (progress + CTAs)
+  ═══════════════════════════════════════ -->
+  <section id="hero-actions" aria-label="Your progress and next step">
+    <div class="hero-actions-inner">
+      <div class="hero-progress" aria-live="polite">
+        <span id="progress-text" class="progress-text">0 of 12 completed</span>
+        <div class="progress-bar-wrap" role="progressbar" aria-valuemin="0" aria-valuemax="12" aria-valuenow="0">
+          <div id="progress-bar-fill" class="progress-bar-fill"></div>
+        </div>
+      </div>
+
+      <div class="hero-ctas">
+        <button id="btn-start-here" class="cta-primary" aria-label="Start with Lesson 1">
+          Start Here
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </button>
+        <button id="btn-continue" class="cta-secondary" aria-label="Jump to your next incomplete lesson">
+          Continue Next Lesson
+        </button>
+      </div>
+    </div>
+    <div class="hero-divider" aria-hidden="true"></div>
   </section>
 
   <!-- ═══════════════════════════════════════
