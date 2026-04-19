@@ -287,6 +287,71 @@ body {
   line-height: 1.6;
 }
 
+/* ─── COURSE PROMISE ─────────────────────────────────────── */
+#course-promise {
+  background: linear-gradient(135deg, #1a1500 0%, #0d0c00 50%, #111000 100%);
+  border-top: 1px solid rgba(207,180,40,0.2);
+  border-bottom: 1px solid rgba(207,180,40,0.2);
+  padding: var(--space-3xl) var(--space-xl);
+  text-align: center;
+}
+
+.promise-inner {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.promise-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3.5vw, 2.1rem);
+  font-weight: 700;
+  background: var(--gold-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: var(--space-md);
+}
+
+.promise-body {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  line-height: 1.7;
+  margin-bottom: var(--space-lg);
+}
+
+.promise-body-sub {
+  color: var(--text-muted);
+  font-size: 0.92rem;
+  margin-bottom: 0;
+}
+
+.promise-pairs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-xs);
+  margin-bottom: var(--space-lg);
+}
+
+.pair-pill {
+  display: inline-block;
+  padding: 0.4rem 0.9rem;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--gold-base);
+  background: rgba(207,180,40,0.08);
+  border: 1px solid rgba(207,180,40,0.35);
+  border-radius: 100px;
+}
+
+.promise-divider {
+  margin-top: var(--space-2xl);
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(207,180,40,0.25), transparent);
+}
+
 /* ─── SHARED SECTION STYLES ──────────────────────────────── */
 .section-inner {
   max-width: 1180px;
