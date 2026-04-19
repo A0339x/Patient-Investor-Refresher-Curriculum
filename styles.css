@@ -89,7 +89,7 @@ body {
 #hero {
   position: relative;
   background: radial-gradient(ellipse at 50% 0%, #1a1a0a 0%, #0a0a00 35%, var(--bg-deepest) 70%);
-  padding: var(--space-3xl) var(--space-xl);
+  padding: var(--space-3xl) var(--space-xl) var(--space-2xl);
   text-align: center;
   overflow: hidden;
 }
@@ -106,6 +106,21 @@ body {
   background: radial-gradient(ellipse, rgba(207, 180, 40, 0.08) 0%, transparent 70%);
   pointer-events: none;
 }
+
+/* Staggered page-load cascade */
+@keyframes lp-fade-up {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+#hero .brand-eyebrow,
+#hero .hero-title,
+#hero .hero-subtitle {
+  animation: lp-fade-up 0.85s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+#hero .brand-eyebrow { animation-delay: 0.05s; }
+#hero .hero-title    { animation-delay: 0.18s; }
+#hero .hero-subtitle { animation-delay: 0.32s; }
 
 .hero-inner {
   position: relative;
@@ -149,11 +164,6 @@ body {
   margin: 0 auto var(--space-2xl);
   line-height: 1.7;
   font-weight: 400;
-}
-
-/* Progress in hero */
-.hero-progress {
-  margin-bottom: var(--space-2xl);
 }
 
 .progress-text {
@@ -289,77 +299,273 @@ body {
 
 /* ─── COURSE PROMISE ─────────────────────────────────────── */
 #course-promise {
+  position: relative;
   background: linear-gradient(135deg, #1a1500 0%, #0d0c00 50%, #111000 100%);
-  border-top: 1px solid rgba(207,180,40,0.2);
-  border-bottom: 1px solid rgba(207,180,40,0.2);
-  padding: var(--space-3xl) var(--space-xl);
+  padding: calc(var(--space-3xl) + 20px) var(--space-xl) calc(var(--space-3xl) + 100px);
   text-align: center;
+  overflow: hidden;
+}
+
+/* Soft fade from hero into promise (replaces hard top border) */
+#course-promise::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 140px;
+  background: linear-gradient(to bottom, var(--bg-deepest) 0%, transparent 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Soft fade from promise into the actions panel below (replaces hard bottom border) */
+#course-promise::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 180px;
+  background: linear-gradient(to top, var(--bg-deepest) 0%, transparent 100%);
+  pointer-events: none;
+  z-index: 0;
 }
 
 .promise-inner {
+  position: relative;
+  z-index: 1;
   max-width: 720px;
   margin: 0 auto;
 }
 
+/* Editorial rule eyebrow — flanking gold lines instead of a pill */
+.promise-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-lg);
+}
+
+.promise-eyebrow .eyebrow-line {
+  width: 44px;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(207, 180, 40, 0.7));
+}
+
+.promise-eyebrow .eyebrow-line:last-child {
+  background: linear-gradient(to right, rgba(207, 180, 40, 0.7), transparent);
+}
+
+.promise-eyebrow .eyebrow-text {
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+  color: var(--gold-base);
+  padding-left: 0.38em; /* visually compensate the letter-spacing */
+}
+
 .promise-title {
   font-family: var(--font-display);
-  font-size: clamp(1.5rem, 3.5vw, 2.1rem);
-  font-weight: 700;
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 600;
+  font-style: italic;
+  letter-spacing: -0.01em;
+  line-height: 1.15;
   background: var(--gold-gradient);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  margin-bottom: var(--space-md);
+  margin-bottom: var(--space-lg);
 }
 
 .promise-body {
   color: var(--text-secondary);
-  font-size: 1rem;
-  line-height: 1.7;
+  font-size: 1.02rem;
+  line-height: 1.75;
   margin-bottom: var(--space-lg);
+  max-width: 560px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .promise-body-sub {
   color: var(--text-muted);
   font-size: 0.92rem;
-  margin-bottom: 0;
+  margin: var(--space-xl) auto 0;
+  max-width: 580px;
+}
+
+.promise-body-sub strong {
+  color: var(--gold-light);
+  font-weight: 700;
 }
 
 .promise-pairs {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: var(--space-xs);
-  margin-bottom: var(--space-lg);
+  gap: var(--space-sm);
+  margin: var(--space-xl) auto 0;
+  max-width: 620px;
 }
 
 .pair-pill {
-  display: inline-block;
-  padding: 0.4rem 0.9rem;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.7rem 1.3rem 0.7rem 1.1rem;
   font-family: var(--font-body);
-  font-size: 0.8rem;
+  font-size: 0.82rem;
   font-weight: 700;
-  letter-spacing: 0.06em;
-  color: var(--gold-base);
-  background: rgba(207,180,40,0.08);
-  border: 1px solid rgba(207,180,40,0.35);
-  border-radius: 100px;
+  letter-spacing: 0.08em;
+  color: var(--gold-light);
+  background: linear-gradient(180deg, rgba(207, 180, 40, 0.12) 0%, rgba(207, 180, 40, 0.04) 100%);
+  border: 1px solid rgba(207, 180, 40, 0.35);
+  border-radius: var(--radius-sm);
+  transition: transform var(--transition), background var(--transition), border-color var(--transition), box-shadow var(--transition);
 }
 
-/* ─── HERO ACTIONS (progress + CTAs moved below promise) ── */
+.pair-pill::before {
+  content: '';
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--gold-base);
+  margin-right: 0.65rem;
+  box-shadow: 0 0 8px rgba(207, 180, 40, 0.8);
+}
+
+.pair-pill:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(180deg, rgba(207, 180, 40, 0.2) 0%, rgba(207, 180, 40, 0.07) 100%);
+  border-color: var(--gold-light);
+  box-shadow: 0 6px 20px rgba(207, 180, 40, 0.12);
+}
+
+/* Staggered reveal for promise content */
+.promise-eyebrow,
+.promise-title,
+.promise-body,
+.promise-pairs .pair-pill,
+.promise-body-sub {
+  animation: lp-fade-up 0.85s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+.promise-eyebrow            { animation-delay: 0.45s; }
+.promise-title              { animation-delay: 0.55s; }
+.promise-body               { animation-delay: 0.65s; }
+.promise-pairs .pair-pill:nth-child(1) { animation-delay: 0.78s; }
+.promise-pairs .pair-pill:nth-child(2) { animation-delay: 0.86s; }
+.promise-pairs .pair-pill:nth-child(3) { animation-delay: 0.94s; }
+.promise-body-sub           { animation-delay: 1.05s; }
+
+/* ─── HERO ACTIONS — Command Console Panel ───────────────── */
 #hero-actions {
-  padding: var(--space-2xl) var(--space-xl) 0;
-  text-align: center;
+  position: relative;
+  z-index: 2;
+  margin-top: -80px;       /* float up into the promise's lower fade */
+  padding: 0 var(--space-xl) var(--space-3xl);
 }
 
-.hero-actions-inner {
-  max-width: 780px;
+.actions-panel {
+  position: relative;
+  max-width: 620px;
   margin: 0 auto;
+  padding: var(--space-xl) var(--space-xl) var(--space-lg);
+  background: linear-gradient(180deg, #0e0d07 0%, #070704 100%);
+  border: 1px solid rgba(207, 180, 40, 0.22);
+  border-radius: var(--radius-lg);
+  box-shadow:
+    0 24px 60px rgba(0, 0, 0, 0.7),
+    0 0 0 1px rgba(207, 180, 40, 0.04),
+    inset 0 1px 0 rgba(207, 180, 40, 0.08);
+  animation: lp-fade-up 0.95s cubic-bezier(0.22, 0.61, 0.36, 1) 1.15s both;
 }
 
-#hero-actions .hero-divider {
-  margin-top: var(--space-3xl);
+/* Fine gold filament across the top edge — the "luxury detail" */
+.actions-panel::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: 18%;
+  right: 18%;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold-base) 50%, transparent);
+  opacity: 0.8;
+  pointer-events: none;
 }
+
+.actions-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  margin-bottom: var(--space-md);
+}
+
+.actions-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-family: var(--font-body);
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.label-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--gold-base);
+  box-shadow: 0 0 8px rgba(207, 180, 40, 0.7);
+}
+
+/* Progress text & bar restyled inside the panel */
+.actions-panel .progress-text {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold-base);
+  margin-bottom: 0;
+}
+
+.actions-panel .progress-bar-wrap {
+  height: 4px;
+  max-width: none;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 100px;
+  margin: 0;
+  overflow: hidden;
+}
+
+.actions-panel .progress-bar-fill {
+  height: 100%;
+  width: 0%;
+  background: var(--gold-gradient);
+  border-radius: 100px;
+  box-shadow: 0 0 12px rgba(207, 180, 40, 0.35);
+  transition: width var(--transition-slow);
+}
+
+.actions-divider {
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(207, 180, 40, 0.18), transparent);
+  margin: var(--space-lg) 0;
+}
+
+.actions-panel .hero-ctas {
+  gap: var(--space-sm);
+}
+
 
 /* ─── SHARED SECTION STYLES ──────────────────────────────── */
 .section-inner {
@@ -865,6 +1071,40 @@ body {
     width: 100%;
     max-width: 280px;
     justify-content: center;
+  }
+
+  /* Command console — responsive */
+  #hero-actions {
+    margin-top: -50px;
+    padding: 0 var(--space-md) var(--space-2xl);
+  }
+
+  .actions-panel {
+    padding: var(--space-lg);
+  }
+
+  .actions-panel-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-xs);
+  }
+
+  .promise-eyebrow .eyebrow-line {
+    width: 28px;
+  }
+
+  .promise-eyebrow .eyebrow-text {
+    font-size: 0.62rem;
+    letter-spacing: 0.3em;
+  }
+
+  #course-promise {
+    padding: calc(var(--space-2xl) + 20px) var(--space-xl) calc(var(--space-2xl) + 80px);
+  }
+
+  .pair-pill {
+    padding: 0.6rem 1rem 0.6rem 0.9rem;
+    font-size: 0.76rem;
   }
 }
 

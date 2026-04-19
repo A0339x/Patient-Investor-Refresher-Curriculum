@@ -44,15 +44,19 @@
   ═══════════════════════════════════════ -->
   <section id="course-promise" aria-labelledby="promise-heading">
     <div class="promise-inner">
-      <div class="brand-eyebrow">Your Outcome</div>
+      <div class="promise-eyebrow" aria-hidden="true">
+        <span class="eyebrow-line"></span>
+        <span class="eyebrow-text">Your Outcome</span>
+        <span class="eyebrow-line"></span>
+      </div>
       <h2 id="promise-heading" class="promise-title">What You'll Be Able to Do</h2>
       <p class="promise-body">
         By the end of this course, you'll be independently running liquidity positions on the most trusted pairs in crypto.
       </p>
       <div class="promise-pairs" aria-label="Supported trading pairs">
-        <span class="pair-pill">ETH/USDC</span>
-        <span class="pair-pill">Bitcoin/USDC</span>
-        <span class="pair-pill">ETH/Bitcoin</span>
+        <span class="pair-pill">ETH / USDC</span>
+        <span class="pair-pill">Bitcoin / USDC</span>
+        <span class="pair-pill">ETH / Bitcoin</span>
       </div>
       <p class="promise-body promise-body-sub">
         This is the <strong>simplest</strong> version of our curriculum — and that's exactly where its power comes from. Fewer decisions. Less babysitting. A clean, focused approach that still produces returns far beyond anything traditional finance can offer. Master this, and you'll have a real engine working for you.
@@ -64,14 +68,18 @@
        HERO ACTIONS (progress + CTAs)
   ═══════════════════════════════════════ -->
   <section id="hero-actions" aria-label="Your progress and next step">
-    <div class="hero-actions-inner">
-      <div class="hero-progress" aria-live="polite">
+    <div class="actions-panel">
+      <div class="actions-panel-header">
+        <span class="actions-label">
+          <span class="label-dot" aria-hidden="true"></span>
+          Your Progress
+        </span>
         <span id="progress-text" class="progress-text">0 of 12 completed</span>
-        <div class="progress-bar-wrap" role="progressbar" aria-valuemin="0" aria-valuemax="12" aria-valuenow="0">
-          <div id="progress-bar-fill" class="progress-bar-fill"></div>
-        </div>
       </div>
-
+      <div class="progress-bar-wrap" role="progressbar" aria-valuemin="0" aria-valuemax="12" aria-valuenow="0">
+        <div id="progress-bar-fill" class="progress-bar-fill"></div>
+      </div>
+      <div class="actions-divider" aria-hidden="true"></div>
       <div class="hero-ctas">
         <button id="btn-start-here" class="cta-primary" aria-label="Start with Lesson 1">
           Start Here
@@ -82,7 +90,6 @@
         </button>
       </div>
     </div>
-    <div class="hero-divider" aria-hidden="true"></div>
   </section>
 
   <!-- ═══════════════════════════════════════
