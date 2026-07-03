@@ -354,9 +354,20 @@ function escapeHtml(str) {
 const AUTH_KEY = 'lp-refresher-auth';
 const CORRECT_PASSWORD = 'Inner Circle';
 
+// Members arriving from the platform go through the /__auth handshake, which
+// sets a readable "pi_refresher_member=1" marker cookie. When that's present,
+// skip the password box entirely so the Videos link feels like one continuous
+// site. Public visitors (no marker) still see the password. This isn't the
+// real access control — that's the members-platform unlock + the token gate —
+// it's just a courtesy skip so members aren't stopped by a legacy soft gate.
+function cameFromPlatform() {
+  return document.cookie.split(';').some((c) => c.trim() === 'pi_refresher_member=1');
+}
+
 function initPasswordGate() {
   const gate = document.getElementById('password-gate');
-  if (localStorage.getItem(AUTH_KEY) === '1') {
+  if (localStorage.getItem(AUTH_KEY) === '1' || cameFromPlatform()) {
+    localStorage.setItem(AUTH_KEY, '1');
     gate.classList.add('hidden');
     return;
   }

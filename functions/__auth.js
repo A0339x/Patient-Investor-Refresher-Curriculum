@@ -36,14 +36,24 @@ export async function onRequestPost(context) {
 
   const maxAge = Math.max(0, claims.exp - Math.floor(Date.now() / 1000));
   const url = new URL(request.url);
-  return new Response(null, {
-    status: 303,
-    headers: {
-      Location: `${url.origin}/`,
-      "Set-Cookie": `${SESSION_COOKIE}=${token}; Path=/; HttpOnly; Secure; SameSite=Lax; Max-Age=${maxAge}`,
-      "Cache-Control": "no-store",
-    },
-  });
+
+  const headers = new Headers();
+  headers.set("Location", `${url.origin}/`);
+  headers.set("Cache-Control", "no-store");
+  // The real session cookie (HttpOnly — JS can't read it; used by the gate).
+  headers.append(
+    "Set-Cookie",
+    `${SESSION_COOKIE}=${token}; Path=/; HttpOnly; Secure; SameSite=Lax; Max-Age=${maxAge}`,
+  );
+  // A readable marker cookie so the site's legacy client-side password box
+  // knows this visitor came through the platform handshake and skips itself.
+  // Not security (it's readable/forgeable) — just a courtesy skip. Real access
+  // control is the platform unlock + the HttpOnly session cookie above.
+  headers.append(
+    "Set-Cookie",
+    `pi_refresher_member=1; Path=/; Secure; SameSite=Lax; Max-Age=${maxAge}`,
+  );
+  return new Response(null, { status: 303, headers });
 }
 
 // A GET (someone typing /__auth into the bar) just gets the deny page.
